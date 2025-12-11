@@ -29,10 +29,23 @@ export default function App() {
       alert("Submitted Successfully");
       console.log("Todo Saved:", response.data);
       setInputValue("");
+      fetchTodos();
     } catch (error) {
       console.log("Error Saving Todo:", error);
     }
   };
+
+
+  const handleDelete = async (id) => {
+    try{
+      await axios.delete(`http://localhost:8000/todo/${id}`);
+      alert("Deleted Succesfully");
+      setTodoList(todoList.filter((item) => item._id !== id));
+    }
+    catch(error){
+      console.log("Error Deleting todo:", error);
+    }
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
@@ -85,7 +98,7 @@ export default function App() {
           Edit
         </button>
 
-        <button
+        <button onClick={() => handleDelete(item._id)}
           className="px-3 py-1 text-sm font-semibold 
                      bg-red-500 text-white rounded-md
                      hover:bg-red-600 transition"

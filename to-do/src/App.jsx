@@ -64,23 +64,40 @@ export default function App() {
         <h2 className="text-xl font-semibold text-gray-700 mt-8 mb-4">
   Your Todos
 </h2>
-
 <div className="space-y-3">
   {todoList.map((item) => (
-    <div 
+    <div
       key={item._id}
       className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 
                  shadow-sm hover:shadow-md transition-all duration-200 
-                 hover:bg-gray-100"
+                 hover:bg-gray-100 flex items-center justify-between"
     >
       <p className="text-gray-800 font-medium tracking-wide">
         {item.addItem}
       </p>
+
+      <div className="flex items-center space-x-3">
+        <button
+          className="px-3 py-1 text-sm font-semibold 
+                     bg-yellow-400 text-white rounded-md
+                     hover:bg-yellow-500 transition"
+        >
+          Edit
+        </button>
+
+        <button
+          className="px-3 py-1 text-sm font-semibold 
+                     bg-red-500 text-white rounded-md
+                     hover:bg-red-600 transition"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   ))}
 </div>
 
-      </div>
+ </div>
     </div>
   );
 }

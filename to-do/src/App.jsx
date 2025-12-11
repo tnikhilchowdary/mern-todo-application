@@ -9,7 +9,8 @@ export default function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/todo");
+      const response = await axios.get("https://mern-todo-application-4hl8.onrender.com/todo");
+
       setTodoList(response.data.todo);
     } catch (error) {
       console.error("Error Fetching Todos:", error);
@@ -23,9 +24,10 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/todo", {
+      axios.post("https://mern-todo-application-4hl8.onrender.com/todo", {
         addItem: inputValue,
       });
+
       alert("Submitted Successfully");
       setInputValue("");
       fetchTodos(); 
@@ -36,7 +38,7 @@ export default function App() {
 
   const handleUpdate = async (id) => {
     try {
-      await axios.put(`http://localhost:8000/todo/${id}`, {
+      await axios.put(`https://mern-todo-application-4hl8.onrender.com/todo/${id}`, {
         addItem: editingText,
       });
 
@@ -56,7 +58,7 @@ export default function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/todo/${id}`);
+      await axios.delete(`https://mern-todo-application-4hl8.onrender.com/todo/${id}`);
       alert("Deleted Successfully");
       setTodoList(todoList.filter((item) => item._id !== id));
     } catch (error) {

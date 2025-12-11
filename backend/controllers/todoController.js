@@ -55,3 +55,20 @@ export const updateTodo = async (req, res) => {
         })
     }
 }
+
+export const deleteTodo = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const deleteTodos = await Todo.findByIdAndDelete(id);
+        res.status(200).json({
+            message:"Deleted Succesfully",
+            deleteTodos
+        });
+    }
+    catch(error){
+        res.status(500).json({
+            message:"Error in Deleting Todo",
+            error:error.message
+        })
+    }
+}

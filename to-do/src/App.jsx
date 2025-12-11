@@ -61,17 +61,25 @@ export default function App() {
             Submit
           </button>
         </form>
-        <h2>Your TodoS</h2>
-        <ul>
-          {todoList.map((item) => {
-            return(
-            <li key={item.id}>
-              {item.addItem}
-            </li>
-            )
-          })}
-        </ul>
-        <></>
+        <h2 className="text-xl font-semibold text-gray-700 mt-8 mb-4">
+  Your Todos
+</h2>
+
+<div className="space-y-3">
+  {todoList.map((item) => (
+    <div 
+      key={item._id}
+      className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 
+                 shadow-sm hover:shadow-md transition-all duration-200 
+                 hover:bg-gray-100"
+    >
+      <p className="text-gray-800 font-medium tracking-wide">
+        {item.addItem}
+      </p>
+    </div>
+  ))}
+</div>
+
       </div>
     </div>
   );
